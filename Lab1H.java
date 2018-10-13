@@ -1,5 +1,4 @@
-
-	/**
+/**
 	 * Programming Lab Assignment 1
 	 * CECS 328 
 	 * Professor Pouye Sedighian
@@ -14,10 +13,6 @@ import java.util.Random;
 
 public class Lab1H{
 
-
-
-		
-		
 		public static int linearSearch(int[] a, int key) {
 			for ( int i = 0; i< a.length -1; i ++) {
 				if(a[i] == key) {
@@ -28,13 +23,27 @@ public class Lab1H{
 			return -1; // returns -1 if number not found
 		}
 		
+		public static int binarySearch(int[] a, int key) {
+			int left = 0, right = a.length - 1, m = 0;
+			while (left <= right) {
+				m = (int) Math.ceil((left + right)/2);
+				if (a[m] > key) {
+					right = m - 1;
+				}else if (a[m] < key) {
+					left = m + 1;
+				}else if (a[m] == key) {
+					return m;
+				}
+			}
+			return m;	
+		}
+		
 		public static void main(String[] args) {
 			Scanner in = new Scanner(System.in);
 			int n, key;
 			Random r = new Random();
 			double start, stop, binaryTime = 0.00, linearTime = 0.00;
 			double bTotalTime = 0, lTotalTime = 0;
-			
 			
 			//Part A	
 			System.out.println("Please enter in a positive integer:");
@@ -105,4 +114,3 @@ public class Lab1H{
 			
 		}
 	}
-
