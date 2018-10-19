@@ -26,46 +26,54 @@ public class Lab2H{
 			intArray[i] = Character.getNumericValue(binaryArrayString.charAt(i));		
 		}
 		int left = 0, right = intArray.length -1, m = 0;
-		while (left <= right) {
-			m = (int) Math.ceil((left + right)/2);
-			if (intArray[m] == 0) {
-				if(intArray[m+1] == 0) {
+		while (left <= right) {  // loops until left is greater than right
+			m = (int) Math.ceil((left + right)/2); // finds the midpoint of array
+			if (intArray[m] == 0) { // when the midpoint is a 0
+				if(intArray[m+1] == 0) { // if the element after midpoint is still 0
 					left = m + 1;
-				}else if (intArray[m+1] == 1) {
-					return m+1;
+				}else if (intArray[m+1] == 1) { // if the element after midpoint is 1
+					return m+1; // returns that index which is k
 				}
-			}else if (intArray[m] == 1) {
-				if( intArray[m -1] == 1) {
-					right = m -1;
-				} else if( intArray[m -1] == 0) {
-					return m;
+			}else if (intArray[m] == 1) { // if the midpoint is 1
+				if( intArray[m -1] == 1) { // checks the previous element 
+					right = m -1; //moves scope of array
+				} else if( intArray[m -1] == 0) { // if the previous element is 0 
+					return m; //returns index , k.
 				}
 			}
 		}
-		return -1;
-
-
+		return -1; // returns -1 if no index k is found.
 	}
+	/**
+	* this method prompts the user to enter in a number 
+	* then proceeds to find the 
+	* squaroot using binary search method and returns the answer.
+	* @return - the answer as an integer
+	*/
 	public static int squareRoot() {
-		Scanner in = new Scanner(System.in);
+		Scanner in = new Scanner(System.in); 
 		String nString;
-		System.out.print("Enter in an integer N: ");
-		nString = in.nextLine().trim();
-		int n = Integer.parseInt(nString);
-		int left = 0, right = n - 1, m = 0;
-		
-		while (left <= right) {
-			m = (int) Math.ceil((left + right)/2);
-			if (m*m > n) {
+		System.out.print("Enter in an integer N: "); //prompts user to enter in an Int
+		nString = in.nextLine().trim(); // input as string form
+		int n = Integer.parseInt(nString);  //converts to integer
+		int left = 0, right = n - 1, m = 0;  // declares and intializes leftbound, rightbound and midpoint.
+		while (left <= right) { //loops until left is less than or equal to right.
+			m = (int) Math.ceil((left + right)/2); // calulates midpoint 
+			if (m*m > n) { // checks the left of n 
 				right = m - 1;
-			}else if (m*m < n) {
+			}else if (m*m < n) { // checks the right of n
 				left = m + 1;
-			}else if (m*m == n) {
-				return m;
+			}else if (m*m == n) { // if midpoint * midpoint is euqal to n 
+				return m; //returns answer
 			}
 		}
-		return m;
+		return m; // returns answer 
 	}
+	/**
+	* the main where all the methods 
+	* are implemented and tested.
+	*
+	*/
 	public static void main(String [] args) {
 		
 		System.out.println( "Your number is : " + squareRoot());
