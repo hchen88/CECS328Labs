@@ -127,8 +127,15 @@ public class lab3jh {
 	}
 
 	public static int partition(int[] arr, int low, int high) {
+		int[] medianof3 = new int[3];
+		int median = (low + high) / 2;
+		medianof3[1] = low;
+		medianof3[0] = high;
+		medianof3[2] = median;
+		
+		Arrays.sort(medianof3);
 		//Get the pivot
-		int pivot = arr[high];
+		int pivot = medianof3[1];
 		int s = low - 1;
 	
 		for (int i = low; i <= high - 1; i++) {
